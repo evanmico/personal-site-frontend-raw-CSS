@@ -1,9 +1,22 @@
+/* @import url('//cdn.jsdelivr.net/devicons/1.8.0/css/devicons.min.css'); */
+/* @import url(https://fonts.googleapis.com/css2?family=Ubuntu); */
+/* @import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@500&display=swap');
 :root {
-    --caribbean-current: hsla(181, 77%, 25%, 1);
-    --tyrian-purple: hsla(335, 57%, 24%, 1);
-    --alice-blue: hsla(219, 100%, 95%, 1);
-    --medium-slate-blue: hsla(234, 74%, 66%, 1);
-    --russian-violet: hsla(263, 39%, 20%, 1);
+  /* FONT */
+    --FF: 'Ubuntu', sans-serif;
+    --FS: 1.25rem;
+  /* COLOR */
+    --header: hsla(181, 77%, 25%, 1);
+    --bg-alt: hsla(335, 57%, 24%, 1);
+    --bg-sect: rgba(96, 26, 55, 0.452);
+    --shadow-sect: rgba(96, 26, 50, 0.452);
+    --bg-act: rgba(15, 111, 113, 0.452);
+    --bg-project: hsla(234, 74%, 66%, 0.062);
+    --lightColor: hsla(219, 100%, 95%, 1);
+    --subHeading: hsla(234, 74%, 66%, 1);
+    --bg-primary: hsla(263, 39%, 20%, 1);
+    --shadow-prim: hsl(263, 39%, 15%);
 }
 
 * {
@@ -13,68 +26,264 @@
 }
 
 /*html {
-    background: var(--russian-violet);
+    background: var(--bg-primary);
 }*/
-/* #root {
-    min-height: 100vh;
-} */
-/* body{
-  min-height: 100vh;
-} */
+#root {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+body{
+  font: var(--FS) var(--FF);
+}
 .app {
     min-height: 100vh;
+    min-height: 100svh;
     display: flex;
     flex-direction: column;
+    width: 100%;
 }
 header {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    padding: 0.5em;
+    background: var(--bg-alt);
+}
+
+.header_el {
+  display: grid;
+  place-content:center;
+  text-align: center;
+  row-gap: .5em;
+}
+
+.burgerMenu {
+    background-color: var(--subHeading);
+    display:block;
+    min-height: 10px;
+    min-width: 50px;
+}
+.burger {
+  display: grid;
+  background: none;
+  row-gap: .5em;
+}
+
+.header_el:first-child {
+
+  place-content: center start;
+}
+.header_el:nth-child(2) {
+  display: none;
+}
+
+.header_el:last-child {
+
+  place-content: center end;
+  /* display: none; */
+}
+
+@media screen and (min-width: 777px) {
+  .header_el:last-child {
+    display: grid;
+  }
+  .burger {
+    display: none;
+  }
+  #burgerList {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 912px) {
+  header {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .header_el:nth-child(2) {
+    display: grid;
+  }
+}
+
+.logo-name {
   display: flex;
-  justify-content: space-between;
-  padding: 0.5em;
-  background: var(--tyrian-purple);
+  align-items: center;
+  gap: .25em;
 }
 
 footer {
-  display: flex;
-  justify-content: space-between;
-  padding: 0.5em;
-  background: var(--tyrian-purple);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5em;
+    background: var(--bg-alt);
 }
 
 main {
-  padding: 0.5em;
-  max-width: 850px;
+    padding: 0.5em;
+    max-width: 850px;
 }
 
-
 .content {
-  background: var(--russian-violet);
+    background: var(--bg-primary);
+    display: flex;
+    flex-grow: 1;
+    justify-content: center;
+    padding: 1.5em 0em;
+}
+
+.content_main {
   display: flex;
   flex-direction: column;
   align-items: center;
   flex-grow: 1;
+  gap: 3em;
+}
+.content_primary {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: solid var(--bg-alt);
+  border-radius: 1em;
+  padding: 1em .25em;
+  background-color: var(--bg-sect);
+  box-shadow: 1px 1px 1em .5em var(--shadow-prim);
+}
+
+.content_primary p {
+  text-align: center;
+
+}
+
+.content_action {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1em;
+  border: var(--header) solid;
+  border-radius: 1em;
+  gap: .5em;
+  background-color: var(--bg-act);
+  box-shadow: 1px 1px 1em .5em var(--shadow-prim);
+}
+
+.content_action_button {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 1em;
+}
+
+.content_action_button > * {
+  background: none;
+  padding: .5em;
+  border: .125em solid var(--lightColor);
+  color: var(--lightColor);
+  border-radius: .5em;
+}
+
+.content_action_button .button-element:hover,
+.content_action_button .button-element:focus {
+  background-color: var(--lightColor);
+  color: var(--bg-primary);
 }
 
 .linkList {
-  display: flex;
-  list-style-type: none;
+    display: flex;
+    gap: .5em;
+    list-style-type: none;
+    text-decoration: none;
+    color: var(--subHeading);
 }
+
+.linkListBlock {
+    display: grid;
+    row-gap: .5em;
+    padding: .5em;
+    gap:0;
+}
+
+.siteNavOpt {
+    border-left: solid;
+    padding-left: .125em;
+
+}
+
+.blockSiteNavOpt {
+  border-style: solid;
+  border-color: var(--subHeading);
+  padding: .5em;
+  border-radius: .5em;
+  background-color: var(--bg-project);
+}
+
+.projects {
+    display: grid;
+    padding: 1em;
+    row-gap: 1.5em;
+}
+
+.project {
+    border-style: solid;
+    border-color:var(--subHeading);
+    padding: .5em;
+    border-radius: .5em;
+    background-color: var(--bg-project);
+    box-shadow: 1px 1px .5em .25em var(--shadow-prim);
+}
+
+.project p {
+    padding: .5em 0em;
+}
+
+.project_header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-bottom: solid var(--subHeading);
+    padding: .5em 0.125em;
+}
+
 .logo-name {
-  display: flex;
+    display: flex;
 }
 
 h1 {
-    color: var(--caribbean-current);
-    font-size: 1.5rem;
+    color: var(--header);
 }
 
 h2 {
-    color: var(--medium-slate-blue);
+    color: var(--subHeading);
+    line-height: 1.5;
+}
+
+h3 {
+    color: var(--header);
+}
+
+ul {
+    list-style-type: none;
+    text-align: start;
 }
 
 p {
-    color: var(--alice-blue);
+    color: var(--lightColor);
+    line-height: 1.5;
 }
 
+button {
+  font-size: inherit;
+  font-family: inherit;
+}
+
+a {
+  text-decoration: inherit;
+  color: inherit;
+}
+
+a:hover, a:focus {
+  filter: brightness(150%);
+}
 /*
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
